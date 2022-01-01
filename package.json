@@ -1,0 +1,128 @@
+{
+	"name": "flamework-vscode",
+	"publisher": "flamework",
+	"displayName": "Flamework",
+	"description": "A language service plugin that enhances the editing experience in Flamework.",
+	"version": "0.0.1",
+	"icon": "icon.png",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rbxts-flamework/vscode"
+	},
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"*"
+	],
+	"contributes": {
+		"typescriptServerPlugins": [
+			{
+				"name": "flamework-lsp",
+				"enableForWorkspaceTypeScriptVersions": true
+			}
+		],
+		"configuration": {
+			"title": "Flamework",
+			"properties": {
+				"flamework.casing": {
+					"type": "string",
+					"default": "camelCase",
+					"enum": [
+						"camelCase",
+						"PascalCase",
+						"snake_case"
+					],
+					"enumDescriptions": [
+						"Uses camelCase for fields.",
+						"Uses PascalCase for fields.",
+						"Uses snake_case for fields."
+					],
+					"description": "Determines the casing to use when Flamework autocompletes constructor dependencies."
+				},
+				"flamework.accessibility": {
+					"type": "string",
+					"default": "private-readonly",
+					"enum": [
+						"public",
+						"private",
+						"protected",
+						"public-readonly",
+						"private-readonly",
+						"protected-readonly"
+					],
+					"enumDescriptions": [
+						"Declares constructor dependencies as public.",
+						"Declares constructor dependencies as private.",
+						"Declares constructor dependencies as protected.",
+						"Declares constructor dependencies as public and readonly.",
+						"Declares constructor dependencies as private and readonly.",
+						"Declares constructor dependencies as protected and readonly."
+					],
+					"description": "Determines what accessibility autocompleted constructor dependencies have."
+				},
+				"flamework.constructorOrder": {
+					"type": "string",
+					"default": "preMethods",
+					"enum": [
+						"top",
+						"preFields",
+						"preMethods"
+					],
+					"enumDescriptions": [
+						"Places the constructor at the top of the class.",
+						"Places the constructor above the first property.",
+						"Places the constructor above the first method."
+					],
+					"description": "Determines where autocompleted constructors will be placed, if there is no constructor."
+				},
+				"flamework.constructorPadding": {
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"before",
+						"after",
+						"both"
+					],
+					"enumDescriptions": [
+						"Adds a new line above autocompleted constructors.",
+						"Adds a new line below autocompleted constructors.",
+						"Adds a new line above and below autocompleted constructors."
+					],
+					"description": "Determines the new line padding for autocompleted constructors, if there is no constructor."
+				},
+				"flamework.injectableIdentifiers": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"type": "string"
+					},
+					"description": "Decorators which allow classes to autofill constructors."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/node": "^12.20.1",
+		"@types/vscode": "^1.52.0",
+		"@typescript-eslint/eslint-plugin": "^4.13.0",
+		"@typescript-eslint/parser": "^4.13.0",
+		"eslint": "^7.15.0",
+		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"flamework-lsp": "^0.0.1"
+	}
+}
