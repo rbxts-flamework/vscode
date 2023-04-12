@@ -103,9 +103,15 @@
 					},
 					"description": "Decorators which allow classes to autofill constructors."
 				},
+				"flamework.smarterIntellisense": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enables smarter intellisense by only showing related classes in intellisense in relevant contexts."
+				},
 				"flamework.alwaysUsePropertyDI": {
 					"type": "boolean",
 					"default": false,
+					"deprecationMessage": "You should avoid use of the Dependency macro, especially where DI is available.",
 					"description": "Determines whether Flamework classes should use constructor DI or property DI."
 				}
 			}

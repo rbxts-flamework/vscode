@@ -39,6 +39,7 @@ export function configurePlugin(api: any) {
 		accessibility: flamework.get("accessibility"),
 		constructorOrder: flamework.get("constructorOrder"),
 		constructorPadding: flamework.get("constructorPadding"),
+		smarterIntellisense: flamework.get("smarterIntellisense"),
 		alwaysUsePropertyDI: flamework.get("alwaysUsePropertyDI"),
 		injectableIdentifiers: flamework.get("injectableIdentifiers"),
 	});
