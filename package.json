@@ -3,7 +3,7 @@
 	"publisher": "flamework",
 	"displayName": "Flamework",
 	"description": "A language service plugin that enhances the editing experience in Flamework.",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.52.0"
